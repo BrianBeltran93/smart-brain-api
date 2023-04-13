@@ -12,6 +12,7 @@ const db = knex({
     client: 'pg',
     connection: {
         host : 'dpg-cgrl06fdvk4rjsu3lo10-a.ohio-postgres.render.com',
+        port: 5432,
         user : 'smartbraindb_cp0b_user',
         password : 'TXt6QhAdoY24VxmFnhiYYZrVwzkEQVrB',
         database : 'smartbraindb_cp0b'

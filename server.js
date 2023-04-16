@@ -13,7 +13,7 @@ const db = knex({
     connection: {
         connectionString : 'postgres://smartbraindb_cp0b_user:TXt6QhAdoY24VxmFnhiYYZrVwzkEQVrB@dpg-cgrl06fdvk4rjsu3lo10-a/smartbraindb_cp0b',
         host : 'dpg-cgrl06fdvk4rjsu3lo10-a',
-        port: 5432,
+        port: process.env.DBPORT,
         user : 'smartbraindb_cp0b_user',
         password : 'TXt6QhAdoY24VxmFnhiYYZrVwzkEQVrB',
         database : 'smartbraindb_cp0b'

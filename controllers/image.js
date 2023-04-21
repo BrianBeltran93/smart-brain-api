@@ -37,9 +37,20 @@ const setupClarifaiRequestOptions = (imageUrl) => {
     return requestOptions;
 }
 
-const handleApiCall = (req, res) => {
+const handleFaceDetectionAPICall = (req, res) => {
     
     fetch("https://api.clarifai.com/v2/models/face-detection/outputs", 
+    setupClarifaiRequestOptions(req.body.input))
+    .then(resp => resp.json())
+    .then(data => {
+        res.json(data);
+    })
+    .catch(err => res.status(400).json('unable to work with API'))
+}
+
+const handleAgeDetectionAPICall = (req, res) => {
+    
+    fetch("https://api.clarifai.com/v2/models/age-demographics-recognition/outputs", 
     setupClarifaiRequestOptions(req.body.input))
     .then(resp => resp.json())
     .then(data => {
@@ -61,5 +72,6 @@ const handleImage = (req, res, db) => {
 
 module.exports = {
     handleImage: handleImage,
-    handleApiCall: handleApiCall
+    handleFaceDetectionAPICall: handleFaceDetectionAPICall,
+    handleAgeDetectionAPICall: handleAgeDetectionAPICall
 }

@@ -59,6 +59,17 @@ const handleAgeDetectionAPICall = (req, res) => {
     .catch(err => res.status(400).json('unable to work with API'))
 }
 
+const handleEthnicityDetectionAPICall = (req, res) => {
+    
+    fetch("https://api.clarifai.com/v2/models/ethnicity-demographics-recognition/outputs", 
+    setupClarifaiRequestOptions(req.body.input))
+    .then(resp => resp.json())
+    .then(data => {
+        res.json(data);
+    })
+    .catch(err => res.status(400).json('unable to work with API'))
+}
+
 const handleImage = (req, res, db) => {
     const { id } = req.body;
     db('users').where('id', '=', id)
@@ -73,5 +84,6 @@ const handleImage = (req, res, db) => {
 module.exports = {
     handleImage: handleImage,
     handleFaceDetectionAPICall: handleFaceDetectionAPICall,
-    handleAgeDetectionAPICall: handleAgeDetectionAPICall
+    handleAgeDetectionAPICall: handleAgeDetectionAPICall,
+    handleEthnicityDetectionAPICall: handleEthnicityDetectionAPICall
 }

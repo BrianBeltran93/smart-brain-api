@@ -42,6 +42,8 @@ app.post('/facedetection', (req, res) => { image.handleFaceDetectionAPICall(req,
 
 app.post('/agedetection', (req, res) => { image.handleAgeDetectionAPICall(req, res) })
 
+app.post('/ethnicitydetection', (req, res) => { image.handleEthnicityDetectionAPICall(req, res) })
+
 app.delete('/deleteaccount', (req, res) => {deleteAccount.handleDelete(req, res, db) })
 
 
